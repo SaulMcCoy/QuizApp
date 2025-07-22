@@ -6,3 +6,8 @@ Ivan:
 |Basic navbar items: home, about, leaderboard: home could be the login later on but currently its where the quiz begins
 |content box is working for both displaying the question section and the answer selection
 |made the options a form that can be submitted and also tried to get the app side to display correctly but needs work
+
+Roel:
+Added light mode and darkmode in javascript. 
+Created the login form for the user and password.
+The password is required to be 6 characters long and have special symbols.
