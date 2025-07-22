@@ -13,13 +13,27 @@
         <a href="#" class="nav_items">Home</a>
         <a href="#" class="nav_items">About</a>
         <a href="#" class="nav_items">Leaderboard</a>
+        <button id="mode-toggle">Light/Dark</button>
     </nav>
     <header>
         <h1>Quick Quiz Quest</h1>
     </header>
     <main>
         <div class="content_box">
-            <div class="question_box">
+            <form id="login-form">
+                <label>Username:</label>
+                <input type="text" id="username" placeholder="Name" required>
+
+                <label>Password:</label>
+                <input type="password" id="password" placeholder="Password" required>
+
+                <button type="submit">Login</button>
+
+                <p id="error-message" style="color: red;"></p>
+
+            </form>
+
+          <!--  <div class="question_box">
                 <h3>testing this to make sure all the text fits</h3>
             </div>
             <form action="https://nowhere.com/" method="GET">
@@ -45,8 +59,11 @@
                     </div>
                 </div>
             </form>
+        -->
         </div>
     </main>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
