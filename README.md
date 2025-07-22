@@ -6,3 +6,6 @@ Ivan:
 |Basic navbar items: home, about, leaderboard: home could be the login later on but currently its where the quiz begins
 |content box is working for both displaying the question section and the answer selection
 |made the options a form that can be submitted and also tried to get the app side to display correctly but needs work
+
+Saul:
+From the questions given to us, made sure that the questions are either correct or incorrect based on the user input 
