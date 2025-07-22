@@ -70,3 +70,49 @@ main {
     }
     
 }
+
+#mode-toggle{
+    margin-left: auto;
+    padding: 5px 10px;
+    background-color: #FDFFB8;
+    color:#0e3768;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+.light-mode{
+    background-color:white;
+    color: black
+}
+
+.light-mode nav{
+    background-color: #dddddd;
+
+}
+
+.light-mode .nav_items{
+    color: black;
+}
+
+.light-mode #mode-toggle{
+    background-color: #0e3768;
+    color:#FDFFB8;
+}
+
+#login-form{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    margin-top: 20px;
+
+}
+
+#login-form input, #login-form button{
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
