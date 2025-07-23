@@ -131,3 +131,15 @@ main {
     border-radius: 5px;
     border: 1px solid #ccc;
 }
+
+#timer{
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+#result-page, .result-page {
+    text-align: center;
+    margin-top: 50px;
+}

@@ -101,6 +101,7 @@ function displayQuestion() {
 function selectAnswer(selectedOption, correctAnswer) {
     if (selectedOption === correctAnswer) {
         alert("Your Answer is correct");
+        score++;
     } else {
         alert("Your Answer is not correct, try again next time.");
     }

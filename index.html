@@ -15,10 +15,9 @@
         <a href="#" class="nav_items">Leaderboard</a>
         <button id="mode-toggle">Light/Dark</button>
     </nav>
-    <header>
-        <h1>Quick Quiz Quest</h1>
-        <p id="welcome-message"></p>
-    </header>
+  
+   
+
     <main>
         <div class="content_box">
             <form id="login-form">
@@ -63,6 +62,12 @@
         -->
         </div>
     </main>
+
+    <div id="result-page" style="display: none">
+<h2>Quiz Completed!</h2>
+    <p id = "final-score"></p>
+    <button onclick="location.reload()">Play Again</button>
+    </div>
 
     <script src="/js/script.js"></script>
 </body>

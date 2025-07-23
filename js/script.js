@@ -9,15 +9,17 @@ const loginForm = document.getElementById('login-form');
 const usernameInput = document.getElementById('username');
 const passwordInput = document.getElementById('password');
 const errorMessage = document.getElementById('error-message');
+const welcomeUser = document.getElementById('welcome-user');
 
-loginForm.addEventListener('submit', function (e) {
+let score = 0;
+let timerInterval;
+
+loginForm?.addEventListener('submit', function (e) {
     e.preventDefault();
 
     //Username and password inputs. 
     const username = usernameInput.value;
     const password = passwordInput.value;
-
-
     const pattern = /^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{6,}$/;
 
     if (!pattern.test(password)) {
@@ -34,5 +36,47 @@ loginForm.addEventListener('submit', function (e) {
 
     }
 });
+
+const timerElement = document.getElementById('timer');
+if (timerElement) {
+    let timeLeft = 60;
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        timerElement.textContent = `Time left: ${timeLeft}s`;
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            showResults();
+        }
+    }, 1000);
+}
+
+// Show results (quiz complete or timer ends)
+function showResults() {
+    clearInterval(timerInterval);
+    const quizSection = document.getElementById('quiz-questions');
+    if (quizSection) quizSection.style.display = 'none';
+
+    const resultPage = document.createElement('div');
+    resultPage.innerHTML = `
+        <h2>Quiz Completed!</h2>
+        <p id="final-score">Your score: ${score}/10</p>
+        <button onclick="window.location.href='index.html'">Play Again</button>
+    `;
+
+    document.body.appendChild(resultPage);
+}
+
+
+if (welcomeUser) {
+    const savedUser = sessionStorage.getItem('username');
+    if (savedUser) {
+        welcomeUser.textContent = `Welcome, ${savedUser}!`;
+    }
+}
+
+window.finishQuiz = function(currentScore) {
+    score = currentScore;
+    showResults();
+};
 
 
