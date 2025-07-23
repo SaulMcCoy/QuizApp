@@ -40,6 +40,7 @@ const questions = [
 
 ]
 
+//Starts the questions from the beginning of the array.
 let currentQ = 0;
 
 function displayQuestion() {
@@ -77,12 +78,13 @@ function displayQuestion() {
 
 
     //Used to create another button so long as there are queestions to answer
+    //The onclick is used to go to the next number in the array.
     if (currentQ < questions.length - 1) {
         const nextButton = document.createElement("button");
         nextButton.innerText = "Next Question";
         nextButton.className = "btn btn-success";
         nextButton.onclick = () => {
-            currentQ++;//How we increment through array
+            currentQ++;
             displayQuestion();
         };
         container.appendChild(nextButton);
@@ -108,4 +110,24 @@ function selectAnswer(selectedOption, correctAnswer) {
 window.addEventListener('DOMContentLoaded', function(){
     console.log("The DOM is loaded");
     displayQuestion()
+});
+
+
+/*Confirm the user is logged in*/
+window.addEventListener('load', () =>{
+    //Checks to make sure the user is logged in when the page loads
+    const username = sessionStorage.getItem("username");
+
+    document.getElementById("welcome-message");
+});
+
+/*This is a sign out section.*/
+const logoutButton = document.getElementById('logout-btn');
+logoutButton.addEventListener('click', () => {
+    sessionStorage.removeItem('username');
+
+    //Check to make sure they want to log out
+    if(confirm('Are you sure you want to logout?')){
+        window.location.href = 'index.html';
+    }
 });

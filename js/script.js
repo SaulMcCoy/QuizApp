@@ -6,12 +6,15 @@ toggle.addEventListener('click', () => {
 
 
 const loginForm = document.getElementById('login-form');
+const usernameInput = document.getElementById('username');
 const passwordInput = document.getElementById('password');
 const errorMessage = document.getElementById('error-message');
 
 loginForm.addEventListener('submit', function (e) {
     e.preventDefault();
 
+    //Username and password inputs. 
+    const username = usernameInput.value;
     const password = passwordInput.value;
 
 
@@ -21,7 +24,13 @@ loginForm.addEventListener('submit', function (e) {
         errorMessage.textContent = "Password must be at least 6 characters, include 1 uppercase letter, and 1 special character.";
     } else {
         errorMessage.textContent = "";
-        alert("Login successful! (This is just a demo)");
+        // alert("Login successful! (This is just a demo)");
+        
+        //stores username in sessionStorage. Works like local host.  
+        sessionStorage.setItem('username', username)
+        
+        //This will redirect it to the quiz page.
+        window.location.href = 'quiz.html'
 
     }
 });
