@@ -113,21 +113,44 @@ window.addEventListener('DOMContentLoaded', function(){
 });
 
 
-/*Confirm the user is logged in*/
+//Confirm the user is logged in
 window.addEventListener('load', () =>{
-    //Checks to make sure the user is logged in when the page loads
+    //Checks to make sure the user/guest is logged in when the page loads
     const username = sessionStorage.getItem("username");
+    const guest = sessionStorage.getItem('isGuest');
 
-    document.getElementById("welcome-message");
+    if(!username && !guest){
+        alert('Please log in or play as a guest first to play the quiz.');
+        window.location.href = 'index.html';
+        return;
+    }
+
+    //Displays a welcome message based on if you are a guest or not. 
+    if(guest){
+         document.getElementById("welcome-message").textContent = 'Welcome, Guest';
+    }else{
+         document.getElementById("welcome-message").textContent = `Hello ${username}.`;
+    }
+
+   
 });
 
 /*This is a sign out section.*/
 const logoutButton = document.getElementById('logout-btn');
 logoutButton.addEventListener('click', () => {
     sessionStorage.removeItem('username');
+    sessionStorage.removeItem('guest');
 
     //Check to make sure they want to log out
     if(confirm('Are you sure you want to logout?')){
         window.location.href = 'index.html';
     }
 });
+
+//Disable leader board for guests of the website.
+function guestRestrictedFeatures(){
+    const leaderboardLink = document.querySelector('a[href*="Leaderboard"]');
+    if(leaderboardLink){
+        leaderboardLink.style.display = 'none';
+    }
+}
