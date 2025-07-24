@@ -11,3 +11,8 @@ Roel:
 Added light mode and darkmode in javascript. 
 Created the login form for the user and password.
 The password is required to be 6 characters long and have special symbols.
+
+Saul:
+From the questions given to us, made sure that the questions are either correct or incorrect based on the user input 
+
+Connecting the login menu to the quiz page after the user has inputted their log in info. Also including a log out button for when they want to logout. 

@@ -8,7 +8,6 @@ body {
 
 nav {
     background-color: #63C8FF;
-    height: 25px;
     color: #FDFFB8;
     padding: 10px 15px;
     display: flex;
@@ -64,6 +63,37 @@ main {
     padding: 10px
 }
 
+/*Section that is holding the question.*/
+#quiz-questions{
+    padding-top: 50px;
+}
+
+#question_bank{
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    gap: 30px;
+}
+
+#button-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+    max-width: 500px;
+
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.card {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.questions{
+    margin-bottom: 5px;
+}
 @media screen and (max-width: 600px) {
     main {
         width: 80%;
