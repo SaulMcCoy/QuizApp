@@ -57,23 +57,30 @@ function displayQuestion() {
     }
 
     console.log("Curr question: ", questionData)
-    container.innerHTML = "";//Clear content
+    container.innerHTML = "";
 
     const questionText = document.createElement("p");
     questionText.className = "question-text"
     questionText.innerText = questionData.question; //Question from JSON file 
     container.appendChild(questionText);// Added into the question section
+    
+    //creating a div for the buttons
+    // const buttonGrid = document.createElement('div');
+    // buttonGrid.className = 'button-grid'
 
     //Creating the answer buttons and text.
     const options = ["A", "B", "C", "D"]
     options.forEach(option => {
         const button = document.createElement("button");
-        button.className = "question-button";
-        button.innerText = `${option} ${questionData[option]}`;
+        button.className = "question-button";//Creates class name question-button
+        button.innerText = `${option}.    ${questionData[option]}`;
         button.onclick = () => {
             selectAnswer(option, questionData.answer);//The second param confirms the correct answer.
         };
+       // buttonGrid.appendChild(button);
         container.appendChild(button);
+        
+        
     });
 
 
@@ -82,7 +89,7 @@ function displayQuestion() {
     if (currentQ < questions.length - 1) {
         const nextButton = document.createElement("button");
         nextButton.innerText = "Next Question";
-        nextButton.className = "btn btn-success";
+        nextButton.className = "btn btn-success next-button";
         nextButton.onclick = () => {
             currentQ++;
             displayQuestion();
@@ -99,10 +106,28 @@ function displayQuestion() {
 }
 
 function selectAnswer(selectedOption, correctAnswer) {
+
+    const buttons = document.querySelectorAll(".question-button");  
+    //Going through each button
+    buttons.forEach(button => {
+        const option = button.innerText.charAt(0); // First character (A, B, C, D)
+ 
+        if (option === correctAnswer) {
+            button.style.backgroundColor = "green";
+            button.style.color = "white";
+        } else {
+            button.style.backgroundColor = "red";
+            button.style.color = "white";
+        }
+ 
+        // Disable all buttons after selection
+        button.disabled = true;
+    });
+ 
     if (selectedOption === correctAnswer) {
-        alert("Your Answer is correct");
+        console.log("Correct!");
     } else {
-        alert("Your Answer is not correct, try again next time.");
+        console.log("Incorrect!");
     }
 }
 
@@ -126,10 +151,12 @@ window.addEventListener('load', () =>{
     }
 
     //Displays a welcome message based on if you are a guest or not. 
-    if(guest){
-         document.getElementById("welcome-message").textContent = 'Welcome, Guest';
+    console.log(guest);
+    if(username){
+        document.getElementById("welcome-message").textContent = `Hello ${username}.`;
+        
     }else{
-         document.getElementById("welcome-message").textContent = `Hello ${username}.`;
+         document.getElementById("welcome-message").textContent = 'Welcome, Guest';
     }
 
    

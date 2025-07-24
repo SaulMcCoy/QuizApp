@@ -66,11 +66,27 @@ main {
 /*Section that is holding the question.*/
 #quiz-questions{
     padding-top: 50px;
+}
 
+#question_bank{
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    gap: 30px;
+}
+
+#button-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+    max-width: 500px;
+
+   margin-left: auto;
+   margin-right: auto;
 }
 
 .card {
-    width: 200px;
     margin-left: auto;
     margin-right: auto;
 }
