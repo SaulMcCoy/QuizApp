@@ -11,8 +11,6 @@ const passwordInput = document.getElementById('password');
 const errorMessage = document.getElementById('error-message');
 const welcomeUser = document.getElementById('welcome-user');
 
-let score = 0;
-let timerInterval;
 
 loginForm?.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -49,22 +47,6 @@ if (timerElement) {
     }, 1000);
 }
 
-// Show results (quiz complete or timer ends)
-function showResults() {
-    clearInterval(timerInterval);
-    const quizSection = document.getElementById('quiz-questions');
-    if (quizSection) quizSection.style.display = 'none';
-
-    const resultPage = document.createElement('div');
-    resultPage.innerHTML = `
-        <h2>Quiz Completed!</h2>
-        <p id="final-score">Your score: ${score}/10</p>
-        <button onclick="window.location.href='index.html'">Play Again</button>
-    `;
-
-    document.body.appendChild(resultPage);
-}
-
 
 if (welcomeUser) {
     const savedUser = sessionStorage.getItem('username');
@@ -72,11 +54,6 @@ if (welcomeUser) {
         welcomeUser.textContent = `Welcome, ${savedUser}!`;
     }
 }
-
-window.finishQuiz = function(currentScore) {
-    score = currentScore;
-    showResults();
-};
 
 //Waits for a click to get to the quiz page. 
 const guestButton = document.getElementById('guest-btn');
