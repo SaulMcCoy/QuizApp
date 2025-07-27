@@ -125,7 +125,7 @@ function selectAnswer(selectedOption, correctAnswer) {
     });
  
     if (selectedOption === correctAnswer) {
-        alert("Your Answer is correct");
+        console.log("Correct!");
     } else {
         console.log("Incorrect!");
     }
