@@ -125,13 +125,11 @@ function selectAnswer(selectedOption, correctAnswer) {
     });
  
     if (selectedOption === correctAnswer) {
-    alert("Your Answer is correct");
-    score++;
-    console.log("Correct!");
-} else {
-    console.log("Incorrect!");
+        alert("Your Answer is correct");
+    } else {
+        console.log("Incorrect!");
+    }
 }
-
 
 //Used to confirm that the page is fully loaded before calling displayQuestion function
 window.addEventListener('DOMContentLoaded', function(){
