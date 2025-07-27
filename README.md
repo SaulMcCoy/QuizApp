@@ -5,7 +5,9 @@ Ivan:
 |Created the basic html and css files for the website using a random pallete picker for the colors
 |Basic navbar items: home, about, leaderboard: home could be the login later on but currently its where the quiz begins
 |content box is working for both displaying the question section and the answer selection
-|made the options a form that can be submitted and also tried to get the app side to display correctly but needs work
+|fixed the display box incorrectly rendering the answers 
+|fixed the light/dark mode button in the center of nav
+|added a footer and created a button for resetting quiz if needed
 
 Roel:
 Added light mode and darkmode in javascript. 
