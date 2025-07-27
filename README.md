@@ -13,7 +13,7 @@ Roel:
 Added light mode and darkmode in javascript. 
 Created the login form for the user and password.
 The password is required to be 6 characters long and have special symbols. Added timer, result page, and username displaying. Made sure the score is being displayed and showing how many questions were answered correctly.
-Made the quiz randomly select 10 questions from the json file and created a result page that displays score.
+Made the quiz randomly select 10 questions from the json file and created a result page that displays score. Changed the background with a space gif and change the quiz card box for the questions to blend in with the background. Made the navbar background transparent for the buttons to blend in with the background.
 
 Saul:
 From the questions given to us, made sure that the questions are either correct or incorrect based on the user input 
