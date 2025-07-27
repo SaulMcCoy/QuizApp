@@ -1,7 +1,7 @@
 body {
     background-color: #0e3768;
     font-family: Arial, sans-serif;
-    color: #FDFFB8;
+    color: 	#FDFFB8;
     margin: 0;
     padding: 0;
 }
@@ -36,15 +36,22 @@ main {
     justify-content: center;
     height: 100vh;
     width: 30%;
-    margin: 20px auto;
+    margin: auto;
     border-radius: 25px;
     padding: 0px;
 }
 
+footer{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+}
 .content_box {
     display: grid;
     grid-template-rows: 35% 65%;
-    justify-self: center;
+    height: 50vh;
     width: 80%;
     margin: 0px;
 }
@@ -63,15 +70,26 @@ main {
 }
 
 /*Section that is holding the question.*/
-#quiz-questions {
+#quiz-questions{
     padding-top: 50px;
 }
 
-#question_bank {
+#question_bank{
     padding: 10px;
     font-size: 16px;
     border-radius: 10px;
     gap: 30px;
+}
+
+#button-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+    max-width: 500px;
+
+   margin-left: auto;
+   margin-right: auto;
 }
 
 .card {
@@ -79,22 +97,21 @@ main {
     margin-right: auto;
 }
 
-.questions {
+.questions{
     margin-bottom: 5px;
 }
-
 @media screen and (max-width: 600px) {
     main {
         width: 80%;
     }
-
+    
 }
 
-#mode-toggle {
+#mode-toggle{
     margin-left: auto;
     padding: 5px 10px;
     background-color: #FDFFB8;
-    color: #0e3768;
+    color:#0e3768;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -102,26 +119,26 @@ main {
 }
 
 
-.light-mode {
-    background-color: white;
+.light-mode{
+    background-color:white;
     color: black
 }
 
-.light-mode nav {
+.light-mode nav{
     background-color: #dddddd;
 
 }
 
-.light-mode .nav_items {
+.light-mode .nav_items{
     color: black;
 }
 
-.light-mode #mode-toggle {
+.light-mode #mode-toggle{
     background-color: #0e3768;
-    color: #FDFFB8;
+    color:#FDFFB8;
 }
 
-#login-form {
+#login-form{
     display: flex;
     flex-direction: column;
     width: 250px;
@@ -129,8 +146,7 @@ main {
 
 }
 
-#login-form input,
-#login-form button {
+#login-form input, #login-form button{
     margin-bottom: 10px;
     padding: 8px;
     border-radius: 5px;
