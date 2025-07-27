@@ -9,6 +9,7 @@
     <title>Quiz</title>
 </head>
 
+
 <body>
     <!--Nav bar inside of Quiz-->
     <nav>
@@ -18,25 +19,21 @@
         <button id="mode-toggle">Light/Dark</button>
         <button id="logout-btn" style="margin-left: auto; background: #ff4444; color: white; border: none; padding: 8px 16px; border-radius: 4px;">Logout</button>
     </nav>
-
-    <header>
-        <h2 id="welcome-user"></h2>
-        <p id="timer">Time left: 60s</p>
-    </header>
-
     <!--Quiz cards for questions-->
     <section id="quiz-questions">
-        <div class="card" style="width: 18rem;">
+        <div class="card" style="width: 22rem;">
             <img src="./Images/Japan.jpg" class="card-img-top" alt="...">
             <div class="card-body" id="question_bank">
+                <div id="button-grid" class = "button-grid"></div>
+
                
             </div>
         </div>
 
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-    <script src="/js/script.js"></script>
-    <script src="js/quizQuestions.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/quizQuestions.js"></script>
 </body>
 
 </html>
