@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz Results</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav_items">Home</a>
+    <button id="mode-toggle">Light/Dark</button>
+  </nav>
+
+  <main style="text-align: center; margin-top: 80px;">
+    <h1>Quiz Completed!</h1>
+    <p id="score-display" style="font-size: 24px;"></p>
+    <button onclick="window.location.href='index.html'" style="margin-top: 20px;">Play Again</button>
+  </main>
+
+  <script>
+    const score = sessionStorage.getItem("finalScore");
+    console.log("📥 Score from sessionStorage:", score);
+
+   
+    const safeScore = score ? parseInt(score) : 0;
+    document.getElementById("score-display").textContent = `You scored ${safeScore} out of 10!`;
+  </script>
+</body>
+</html>
