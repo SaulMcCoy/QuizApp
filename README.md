@@ -16,6 +16,7 @@ The password is required to be 6 characters long and have special symbols. Added
 Made the quiz randomly select 10 questions from the json file and created a result page that displays score. Changed the background with a space gif and change the quiz card box for the questions to blend in with the background. Made the navbar background transparent for the buttons to blend in with the background.
 
 Saul:
-From the questions given to us, made sure that the questions are either correct or incorrect based on the user input 
-
+From the questions given to us, made sure that the questions are either correct or incorrect based on the user input and based on the answer the selected the button will either glow green for the correct answer or it will glow red for the incorrect answer.
 Connecting the login menu to the quiz page after the user has inputted their log in info. Also including a log out button for when they want to logout. 
+Created a guest button for the user to select if they do not want to sign in and a welcome to either the user baseed on the user name that they used to sign in or welcome the guest to our quiz app.
+Made sure that the user was either logged into our game as a guest for created an account in order to play our quiz app.
