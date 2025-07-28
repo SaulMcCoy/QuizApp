@@ -4,11 +4,13 @@ toggle.addEventListener('click', () => {
     document.body.classList.toggle('light-mode');
 });
 
+
 const loginForm = document.getElementById('login-form');
 const usernameInput = document.getElementById('username');
 const passwordInput = document.getElementById('password');
 const errorMessage = document.getElementById('error-message');
 const welcomeUser = document.getElementById('welcome-user');
+
 
 loginForm?.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -28,6 +30,7 @@ loginForm?.addEventListener('submit', function (e) {
         
         //This will redirect it to the quiz page.
          window.location.href = './quiz.html'
+
     }
 });
 
