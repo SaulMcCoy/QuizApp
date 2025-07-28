@@ -8,6 +8,7 @@ Ivan:
 |fixed the display box incorrectly rendering the answers 
 |fixed the light/dark mode button in the center of nav
 |added a footer and created a button for resetting quiz if needed
+|fixed more bugs for the website
 
 Roel:
 Added light mode and darkmode in javascript. 
