@@ -29,7 +29,7 @@ loginForm?.addEventListener('submit', function (e) {
         sessionStorage.setItem('username', username)
         
         //This will redirect it to the quiz page.
-         window.location.href = 'quiz.html'
+         window.location.href = './quiz.html'
 
     }
 });
@@ -59,6 +59,6 @@ if (welcomeUser) {
 const guestButton = document.getElementById('guest-btn');
 guestButton.addEventListener('click', ()=> {
     sessionStorage.setItem('isGuest', 'true');
-    window.location.href = 'quiz.html';
+    window.location.href = './quiz.html';
 })
 
