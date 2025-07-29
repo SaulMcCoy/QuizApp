@@ -22,3 +22,4 @@ Connecting the login menu to the quiz page after the user has inputted their log
 Created a guest button for the user to select if they do not want to sign in and a welcome to either the user baseed on the user name that they used to sign in or welcome the guest to our quiz app.
 Made sure that the user was either logged into our game as a guest for created an account in order to play our quiz app.
 Connecting what we have with mongodb so we have a database with all logged in players
+Created a team email and team mongodb account where we all have access to our "Central" DB and am able to connect to the db that was created. 

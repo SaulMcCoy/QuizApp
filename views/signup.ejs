@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Sign Up</title>
+</head>
+<body>
+    <div class="container">
+        <form method="POST" action="/signup/submit" class="signup_form">
+            <div class="form_header">
+                <h1>Sign up</h1>
+                <p>Already have an account? <a href="/signin">Sign in</a></p>
+            </div>
+
+            <label for="name">Name</label>
+            <input id="name" type="text" name="name" required>
+
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" required>
+
+            <label for="password">Password</label>
+            <input id="password" type="password" name="password" required>
+
+            <input type="submit" value="Sign up">
+
+            <% if (typeof signupError !== 'undefined') { %>
+                <p class="error-message" style="color: red;"><%= signupError %></p>
+            <% } %>
+        </form>
+    </div>
+</body>
+</html>
