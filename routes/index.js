@@ -21,17 +21,17 @@ router.get('/signup', function(req, res, next) {
   res.render("signup");
 });
 
-// router.post("/signup/submit", async (req, res) => {
-//   //Insert data into mongo db or throws an error.
-//   const userCollection = getCollection('users');//Get collection based on the uername
-//   try{
-//     await userCollection.insertOne(req.body);
-//     //Sends a notification to the user that their data has been saved.
-//     res.send('User infomation has been saved');
-//   }catch(e){
-//     res.status(500).send('Not able to save user info to db');
-//   }
-// });
+router.post("/signup/submit", async (req, res) => {
+  //Insert data into mongo db or throws an error.
+  const userCollection = getCollection('users');//Get collection based on the uername
+  try{
+    await userCollection.insertOne(req.body);
+    //Sends a notification to the user that their data has been saved.
+    res.send('User infomation has been saved');
+  }catch(e){
+    res.status(500).send('Not able to save user info to db');
+  }
+});
 
 router.post("/signin/submit", (req, res) => {
   //TODO

@@ -124,7 +124,7 @@ window.addEventListener('load', () =>{
 
     if(!username && !guest){
         alert('Please log in or play as a guest first to play the quiz.');
-        window.location.href = 'index.html';
+        window.location.href = 'signup';
         return;
     }
 
@@ -148,7 +148,7 @@ logoutButton.addEventListener('click', () => {
 
     //Check to make sure they want to log out
     if(confirm('Are you sure you want to logout?')){
-        window.location.href = 'index.html';
+        window.location.href = 'signup.ejs';
     }
 });
 

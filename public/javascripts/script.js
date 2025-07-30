@@ -8,6 +8,7 @@ toggle.addEventListener('click', () => {
 const loginForm = document.getElementById('login-form');
 const usernameInput = document.getElementById('username');
 const passwordInput = document.getElementById('password');
+const confirmPasswordInput = document.getElementById('confirmPassword');
 const errorMessage = document.getElementById('error-message');
 const welcomeUser = document.getElementById('welcome-user');
 
@@ -18,20 +19,24 @@ loginForm?.addEventListener('submit', function (e) {
     //Username and password inputs. 
     const username = usernameInput.value;
     const password = passwordInput.value;
+    const confirmPassword = confirmPasswordInput.value;
     const pattern = /^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{6,}$/;
 
     if (!pattern.test(password)) {
         errorMessage.textContent = "Password must be at least 6 characters, include 1 uppercase letter, and 1 special character.";
-    } else {
-        errorMessage.textContent = "";
+        return;
+    } 
 
-        //stores username in sessionStorage. Works like local host.  
-        sessionStorage.setItem('username', username)
-        
-        //This will redirect it to the quiz page.
-         window.location.href = './quiz.html'
-
+    if(password !== confirmPassword){
+        errorMessage.textContent = 'The passwords do not match, please try again.';
+        return;
     }
+
+    errorMessage.textContent = '';
+
+    sessionStorage.setItem('username', username);
+    //After confirming the sign up redirect to quiz. 
+    window.location.href = 'quiz'
 });
 
 const timerElement = document.getElementById('timer');

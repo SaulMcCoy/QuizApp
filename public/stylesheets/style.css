@@ -1,6 +1,6 @@
 
 body {
-    background: url('/Images/space.gif') no-repeat center center fixed;
+    background: url('/images/space.gif') no-repeat center center fixed;
     background-size: cover;
     color: #fff; 
     font-family: Arial, sans-serif;
@@ -26,6 +26,20 @@ nav {
     text-decoration: none;
     font-size: 16px;
     font-weight: bold;
+}
+
+/*Signup Section*/
+#signinButton{
+    color: #63C8FF;
+}
+
+/*Signin Section*/
+#signupbutton{
+    color: #63C8FF;
+}
+
+.form-control{
+    border-radius: 20px;
 }
 
 .nav_items:hover {
