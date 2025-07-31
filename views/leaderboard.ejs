@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Leaderboard</title>
+</head>
+<body>
+  <h1>Top Scores</h1>
+  <ol>
+    <% scores.forEach(score => { %>
+      <li><%= score.name %>: <%= score.score %></li>
+    <% }); %>
+  </ol>
+</body>
+</html>

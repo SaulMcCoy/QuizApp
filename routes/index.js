@@ -5,12 +5,11 @@ const { getCollection } = require('../models/db');
 /* GET home page. */
 router.get('/', async function(req, res, next) {
   try {
-    const testCollection = getCollection('test'); // Try to access a collection named 'test'
-    const documents = await testCollection.find({}).toArray(); // Fetch all docs
-    // res.render('index', { title: 'MongoDB Test', data: documents });
+    const testCollection = getCollection('test');
+    const documents = await testCollection.find({}).toArray();
     res.redirect('signup');
   } catch (err) {
-    next(err); // Pass errors to error handler
+    next(err);
   }
 });
 
@@ -22,18 +21,54 @@ router.get('/signup', function(req, res, next) {
   res.render("signup");
 });
 
-router.get('/quiz', function(req,res,next){
-  res.render('quiz');
-})
+// Updated quiz route to handle both registered users and guests
+router.get('/quiz', async function(req, res, next) {
+  const username = req.query.username;
+  
+  // Check if user is playing as guest (case-insensitive)
+  if (!username) {
+    return res.redirect('/signin');
+  }
+  
+  if (username.toLowerCase() === 'guest') {
+    return res.render('quiz', { 
+      username: 'Guest',
+      isGuest: true 
+    });
+  }
+  
+  try {
+    // Validate that the username exists in the database for registered users
+    const userCollection = getCollection('users');
+    const user = await userCollection.findOne({ username: username });
+    
+    if (!user) {
+      // Username doesn't exist in database, redirect to signin
+      return res.render('signin', { 
+        error: 'Invalid user session. Please sign in again.' 
+      });
+    }
+    
+    // Username is valid, render quiz page with username
+    res.render('quiz', { 
+      username: username,
+      isGuest: false 
+    });
+    
+  } catch (err) {
+    console.error('Error validating user:', err);
+    next(err);
+  }
+});
 
-
-//Also want to make sure the password is correct 
 router.post("/signup/submit", async (req, res) => {
+  console.log('Signup request received:', req.body); // Debug log
   const {username, email, password, confirmPassword} = req.body;
 
-  //Backend validation to also check in the backend if the code works 
+  // Backend validation
   const pattern = /^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{6,}$/;
   if (!pattern.test(password)) {
+    console.log('Password validation failed for:', password); // Debug log
     return res.render('signup', {
       error: 'Password must be at least 6 characters and include 1 uppercase letter and 1 special character.',
       username,
@@ -42,6 +77,7 @@ router.post("/signup/submit", async (req, res) => {
   }
 
   if (password !== confirmPassword) {
+    console.log('Password mismatch'); // Debug log
     return res.render('signup', {
       error: 'Passwords do not match.',
       username,
@@ -49,33 +85,56 @@ router.post("/signup/submit", async (req, res) => {
     });
   }
 
-  //Insert data into mongo db or throws an error.
-  const userCollection = getCollection('users');//Get collection based on the uername
-  try{
-    await userCollection.insertOne(req.body);
-    //Sends a notification to the user that their data has been saved.
-    res.send('User infomation has been saved');
-  }catch(e){
+  const userCollection = getCollection('users');
+  try {
+    // Check if username already exists
+    const existingUser = await userCollection.findOne({ username: username });
+    if (existingUser) {
+      console.log('Username already exists:', username); // Debug log
+      return res.render('signup', {
+        error: 'Username already exists. Please choose a different one.',
+        username,
+        email
+      });
+    }
+    
+    console.log('Inserting user into database...'); // Debug log
+    await userCollection.insertOne({
+      username,
+      email,
+      password
+    });
+    console.log('User inserted successfully, redirecting...'); // Debug log
+    
+    // Redirect to quiz with username after successful signup
+    res.redirect(`/quiz?username=${encodeURIComponent(username)}`);
+  } catch (e) {
+    console.error('Database error:', e);
     res.status(500).send('Not able to save user info to db');
   }
-
-  res.redirect('quiz');
 });
 
 router.post("/signin/submit", async (req, res) => {
-  //Working on backend sign in functionallty. 
-  const {username, password} = req.body;
-  
-  try{
-    const userCollection = getCollection('users');
-    const signedUpUser = await userCollection.findOne({ username });
+  const { username, password } = req.body;
 
-    if(!signedUpUser || signedUpUser.password !== password){
-     return res.status(401).render('signin', { error: 'Invalid username or password' });
+  try {
+    const userCollection = getCollection('users');
+    const user = await userCollection.findOne({ username: username });
+    
+    if (!user) {
+      return res.render("signin", { error: "User not found!" });
     }
-    res.render('quiz', {username: signedUpUser.username});
-  }catch (e) {
-    res.status(500).send('Internal sever error');
+
+    // Note: You should hash passwords in production
+    if (user.password !== password) {
+      return res.render("signin", { error: "Invalid password!" });
+    }
+
+    // Redirect with username in the URL query
+    res.redirect(`/quiz?username=${encodeURIComponent(username)}`);
+  } catch (err) {
+    console.error('Signin error:', err);
+    res.status(500).render("signin", { error: "Server error" });
   }
 });
 

@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+const mongoose = require('mongoose');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -8,6 +9,9 @@ const {connectToDB} = require('./models/db');//path to connect to db
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var quizRouter = require('./routes/quiz');
+
+
 
 var app = express();
 //DB connection
@@ -32,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/', quizRouter);
 
 //Port to see values on loacal port
 var port = '3001';
